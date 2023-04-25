@@ -1,0 +1,11 @@
+Marlon Trejo
+
+Using the attributes from the Song and Tracklist Entities
+
+Functional Dependencies
+
+{Song Name} -> {Artists, Writers,Track Number}
+{Album Name} -> {Duration}
+
+
+3rd Normal Form- same as above
