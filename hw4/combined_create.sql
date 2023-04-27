@@ -5,7 +5,27 @@ SET search_path TO group7hw4, public;
 --Because it created too many excess tables that doesn't fit
 --the scope of our data. ex: a producer table with only one attribute.
 
+--Nathaniel Gong
+CREATE TABLE Artist(
+	Artist_Name VARCHAR(100) PRIMARY KEY NOT NULL,
+	Monthly_Listeners INT,
+	Biography VARCHAR(500),
+	Followers INT 
+);
+
+CREATE TABLE Top_Song(
+	Song_Name VARCHAR(100),
+	Rank INT,
+	Total_Listens BIGINT,
+	Artist_Name VARCHAR(100) references artist(artist_name)
+);
+
 --Maxwell Wu
+create table IF NOT EXISTS genre (
+	genre_name varchar PRIMARY KEY,
+	genre_description varchar
+);
+
 create table IF NOT EXISTS album (
 	album_name varchar PRIMARY KEY,
 	artist varchar references artist(artist_name),
@@ -14,35 +34,19 @@ create table IF NOT EXISTS album (
 	duration int,
 	record_label varchar,
 	producer varchar,
-	genre varchar references genre(genre_name),
+	genre varchar references genre(genre_name)
 );
-
-create table IF NOT EXISTS genre (
-	genre_name varchar PRIMARY KEY,
-	genre_description varchar
-);
-
---Nathaniel Gong
-CREATE TABLE Artist(
-	Artist_Name VARCHAR(100) PRIMARY KEY NOT NULL,
-	Monthly_Listeners INT,
-	Biography VARCHAR(500),
-	Followers INT );
-
-CREATE TABLE Top_Song(
-	Song_Name VARCHAR(100),
-	Rank INT,
-	Total_Listens INT,
-	Artist_Name VARCHAR(100));
   
 -- Marlon Trejo
 CREATE TABLE Tracklist(  
-	Album_Name VARCHAR(100),
+	Album_Name VARCHAR(100) references album(album_name),
 	Duration INT,
 	Track_Number INT,
-	Song_Name VARCHAR(100));
+	Song_Name VARCHAR(100)
+);
 
 CREATE TABLE Song(
 	Song_Name VARCHAR(100) PRIMARY KEY NOT NULL,
-	Artist VARCHAR(100),
-	Writers VARCHAR(100));
+	Artist VARCHAR(100) references artist(artist_name),
+	Writers VARCHAR(100)
+);
