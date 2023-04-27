@@ -1,0 +1,5 @@
+Execution order:
+combined_create.sql, combined_insert.sql, Trejo_1-3_queries.sql, query_Gong.sql, query_wu.sql
+
+
+We combined our group member's work into the "combined_create.sql" and "combined_insert.sql", and listed who did what over each command.
